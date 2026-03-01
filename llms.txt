@@ -1,0 +1,49 @@
+# dev-docs-suite
+
+A Claude Skill that generates the four most time-consuming developer documents from minimal input: post-mortems, Architecture Decision Records (ADRs), API contract documentation, and developer onboarding guides.
+
+## Purpose
+
+Software developers spend hours writing documentation that follows predictable structures. This skill encodes those structures and best practices so Claude can generate complete, professional documents from a short conversation — saving 30–90 minutes per document.
+
+## How it works
+
+The skill lives in the `dev-docs-suite/` folder. When installed in Claude, it triggers automatically when a user asks to write any of the four supported document types. Claude reads the relevant template from `dev-docs-suite/references/`, asks minimal follow-up questions, and produces a complete Markdown document.
+
+## Supported document types
+
+- **Post-Mortem** (`references/post-mortem.md`): Blameless incident reports with timeline, root cause, impact metrics, and action items
+- **ADR** (`references/adr.md`): Architecture Decision Records capturing what was decided, why, and what alternatives were rejected
+- **API Contract Doc** (`references/api-contract.md`): Full endpoint documentation with parameters, request/response examples, and error codes
+- **Onboarding Guide** (`references/onboarding.md`): Developer onboarding docs covering setup, conventions, gotchas, and ownership
+
+## File structure
+
+- `dev-docs-suite/SKILL.md` — Main skill file: trigger conditions, routing logic, quality rules
+- `dev-docs-suite/references/post-mortem.md` — Post-mortem template and checklist
+- `dev-docs-suite/references/adr.md` — ADR template and checklist
+- `dev-docs-suite/references/api-contract.md` — API documentation template and checklist
+- `dev-docs-suite/references/onboarding.md` — Onboarding guide template and checklist
+
+## MCP usage via gitMCP
+
+This repo is accessible as a live MCP server via gitMCP:
+`https://gitmcp.io/yourusername/dev-docs-suite`
+
+AI tools connecting via this URL can read the skill instructions and templates directly, giving them full context to generate any of the four document types on demand.
+
+## Trigger phrases
+
+The skill activates on phrases like:
+- "write a post-mortem", "incident report", "outage report", "retrospective"
+- "create an ADR", "architecture decision", "document this decision"
+- "document this API", "API contract", "endpoint docs"
+- "onboarding docs", "new developer guide", "how this codebase works"
+
+## Quality standards
+
+Every generated document passes a built-in checklist before delivery. Templates enforce specificity (no vague "database issues" — only "connection pool exhausted at 847 connections"), action orientation, and completeness.
+
+## License
+
+MIT
